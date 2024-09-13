@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="{{ url_for('static',filename='assets/img/favicon.png')}}" rel="icon">
+  <link href="{{ url_for('static',filename = 'assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{{ url_for('static', filename='assets/vendor/animate.css/animate.min.css')}}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <title>SAS</title>
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+  </head>
+  <body>
+ <header id="header" class="d-flex align-items-center">
+    <div class="container d-flex justify-content-between align-items-center">
+
+      <div class="logo">
+        <h1><a href="http://127.0.0.1:5000/">SAS</a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a  href="http://127.0.0.1:5000/">Home</a></li>
+          <li><a href="http://127.0.0.1:5000/aboutus/">About</a></li>
+            <li>
+          <a href="/logout" style="text-align:center;border:1px solid">Logout</a>
+        </li>
+            <li>
+                <a> : {{session.username}}</a>
+            </li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+    -->
+
+  <p class="lead" style="text-align:center; margin: 2%; font-size:40px; font-weight: bold;">
+  Welcome to Admin Portal
+</p>
+<div style="text-align:center; font-weight:bold; font-size:20px; color:green">{% if msg%}
+          {{msg}}
+            {% endif %}</div>
+
+
+  <div class="accordion" id="accordionExample" style="margin-left:20%; margin-right:20%">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Add Branch
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <form action="" method="post" style="padding:50px; margin-left:15%;margin-right:15%">
+  <div class="mb-3">
+    <label for="bname" class="form-label">Branch Name</label>
+    <input type="text" class="form-control" id="bname" name="branch">
+  </div>
+
+              <div class="mb-3">
+    <label for="pname" class="form-label">Programme Name</label>
+    <input type="text" class="form-control" id="pname" name="programme">
+  </div>
+
+          <div class="mb-3">
+    <label for="intake" class="form-label">Number of Intakes</label>
+    <input type="tel" class="form-control" id="intake" name="intake">
+  </div>
+  <button type="submit" class="btn btn-primary" name="branch" value="branch" style="margin-left:42%">Add</button>
+
+            <div style="color:white;background-color:green;font-weight:bold;text-align:center;margin-top:20px;font-size:20px;font-family:'Lucida Console','Courier New', monospace;"> LIST OF Branches</div>
+            <table style="width:100%;text-align:center;">
+    <thead>
+    <tr>
+        <th style="border: 1px solid black;border-collapse: collapse;">Branch Name</th>
+        <th style="border: 1px solid black;border-collapse: collapse;">Programme Name</th>
+        <th style="border: 1px solid black;border-collapse: collapse;">Intakes</th>
+    </tr>
+    </thead>
+    <tbody>
+        {% for row in bra %}
+            <tr>
+                <td style="border: 1px solid black;border-collapse: collapse;">{{row[0]}}</td>
+                <td style="border: 1px solid black;border-collapse: collapse;">{{row[2]}}</td>
+                <td style="border: 1px solid black;border-collapse: collapse;">{{row[1]}}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</form>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        Add Faculty
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <form action="" method="post" style="padding:50px; margin-left:15%;margin-right:15%">
+  <div class="mb-3">
+    <label for="id" class="form-label">Faculty Id</label>
+    <input type="text" class="form-control" id="id" name="id" aria-describedby="emailHelp">
+  </div>
+  <div class="mb-3">
+    <label for="fname" class="form-label">First Name</label>
+    <input type="text" class="form-control" id="fname" name="firstname">
+  </div>
+          <div class="mb-3">
+    <label for="lname" class="form-label">Last Name</label>
+    <input type="text" class="form-control" id="lname" name="lastname">
+  </div>
+          <div class="mb-3">
+    <label for="mono" class="form-label">Mob No.</label>
+    <input type="tel" class="form-control" id="mono" name="mob">
+  </div>
+  <button type="submit" class="btn btn-primary" name="faculty" value="faculty" style="margin-left:42%">Add</button>
+
+            <div style="color:white;background-color:green;font-weight:bold;text-align:center;margin-top:20px;font-size:20px;font-family:'Lucida Console','Courier New', monospace;"> LIST OF FACULTIES</div>
+            <table style="width:100%;text-align:center;">
+    <thead>
+    <tr>
+        <th style="border: 1px solid black;border-collapse: collapse;">Faculty ID</th>
+        <th style="border: 1px solid black;border-collapse: collapse;">First Name</th>
+        <th style="border: 1px solid black;border-collapse: collapse;">Last Name</th>
+        <th style="border: 1px solid black;border-collapse: collapse;">Mob No</th>
+    </tr>
+    </thead>
+    <tbody>
+        {% for row in fac %}
+            <tr>
+                <td style="border: 1px solid black;border-collapse: collapse;">{{row[0]}}</td>
+                <td style="border: 1px solid black;border-collapse: collapse;">{{row[1]}}</td>
+                <td style="border: 1px solid black;border-collapse: collapse;">{{row[2]}}</td>
+                <td style="border: 1px solid black;border-collapse: collapse;">{{row[3]}}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</form>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        Add Student
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <form action="" method="post" style="padding:50px; margin-left:15%;margin-right:15%">
+
+    <div class="mb-3">
+    <label for="roll" class="form-label">Roll No.</label>
+    <input type="text" class="form-control" id="roll" name="roll" aria-describedby="emailHelp">
+  </div>
+
+  <!-- Select Branch Dropdown -->
+  <div class="mb-3">
+    <label for="programme" class="form-label">Programme Name</label>
+    <select class="form-select" name="programme" id="programme">
+  {% for j in uniqueprogramme %}
+  <OPTION value={{j[0]}}>{{j[0]}}</OPTION>
+{% endfor %}
+    </select>
+  </div>
+  <!-- Select Branch Dropdown -->
+  <div class="mb-3">
+    <label for="branch" class="form-label">Select Branch</label>
+    <select class="form-select" name="branch" id="branch">
+  {% for j in uniquebranch %}
+  <OPTION value={{j[0]}}>{{j[0]}}</OPTION>
+{% endfor %}
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label for="sfname" class="form-label">First Name</label>
+    <input type="text" class="form-control" id="sfname" name="firstname">
+  </div>
+          <div class="mb-3">
+    <label for="slname" class="form-label">Last Name</label>
+    <input type="text" class="form-control" id="slname" name="lastname">
+  </div>
+
+          <div class="mb-3">
+    <label for="smono" class="form-label">Mob No.</label>
+    <input type="tel" class="form-control" id="smono" name="mob">
+  </div>
+
+  <button type="submit" class="btn btn-primary" name="student" value="student" style="margin-left:42%">Add</button>
+        <div style="color:red; font-weight:bold"> Please Note that after clicking Add button a Popup will come up to capture images. Requested to click atleast 15 images.</div>
+</form>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingFour">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+        Add Subject
+      </button>
+    </h2>
+    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+<form action="" method="post" style="padding:50px; margin-left:15%;margin-right:15%">
+
+  <div class="mb-3">
+    <label for="sname" class="form-label">Subject Name</label>
+    <input type="text" class="form-control" id="sname" name="sname">
+  </div>
+
+        <div class="mb-3">
+    <label for="fid" class="form-label">Faculty </label>
+    <select class="form-select" name="fid" id="fid">
+  {% for j in fac %}
+      <OPTION value="{{ j[0] }}_{{ j[1] }}_{{ j[2] }}">
+      {{ j[0] }}_{{ j[1] }}_{{ j[2] }}
+    </OPTION>
+{% endfor %}
+    </select>
+  </div>
+    <div>
+    <label for="branch_name" class="form-label">Select Branch</label>
+    <select class="form-select" name="branch_name" id="branch_name">
+  {% for j in uniquebranch %}
+  <OPTION value={{j[0]}}>{{j[0]}}</OPTION>
+{% endfor %}
+    </select>
+  </div>
+
+      <div class="mb-3">
+    <label for="programme_name" class="form-label">Programme Name</label>
+    <select class="form-select" name="programme_name" id="programme_name">
+  {% for j in uniqueprogramme %}
+  <OPTION value={{j[0]}}>{{j[0]}}</OPTION>
+{% endfor %}
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary" name="subject" value="subject" style="margin-left:42%">Add</button>
+<div style="color:white;background-color:green;font-weight:bold;text-align:center;margin-top:20px;font-size:20px;font-family:'Lucida Console','Courier New', monospace;"> LIST OF SUBJECTS</div>
+    <table style="width:100%;text-align:center;">
+    <thead>
+    <tr>
+        <th style="border: 1px solid black;border-collapse: collapse;">Subject Name</th>
+        <th style="border: 1px solid black;border-collapse: collapse;">Faculty </th>
+        <th style="border: 1px solid black;border-collapse: collapse;">Branch Name</th>
+        <th style="border: 1px solid black;border-collapse: collapse;">Programme Name</th>
+
+    </tr>
+    </thead>
+    <tbody>
+        {% for row in sub %}
+            <tr>
+                <td style="border: 1px solid black;border-collapse: collapse;">{{row[1]}}</td>
+                <td style="border: 1px solid black;border-collapse: collapse;">{{row[2]}}</td>
+                <td style="border: 1px solid black;border-collapse: collapse;">{{row[3]}}</td>
+                <td style="border: 1px solid black;border-collapse: collapse;">{{row[4]}}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</form>
+      </div>
+    </div>
+  </div>
+
+
+
+    <div class="accordion-item">
+    <h2 class="accordion-header" id="headingFive">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+        View Student
+
+      </button>
+    </h2>
+    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+<form action="" method="post" style=" margin-left:15%;margin-right:15%">
+    <div style="color:white;background-color:green;font-weight:bold;text-align:center;margin-top:20px;font-size:20px;font-family:'Lucida Console','Courier New', monospace;"> LIST OF STUDENTS</div>
+<table style="width:100%;text-align:center;">
+    <thead>
+    <tr>
+        <th style="border: 1px solid black;border-collapse: collapse;">Roll No</th>
+        <th style="border: 1px solid black;border-collapse: collapse;">Branch</th>
+        <th style="border: 1px solid black;border-collapse: collapse;">Programme Name</th>
+        <th style="border: 1px solid black;border-collapse: collapse;">First Name</th>
+        <th style="border: 1px solid black;border-collapse: collapse;">Last Name</th>
+        <th style="border: 1px solid black;border-collapse: collapse;">Mob No</th>
+    </tr>
+    </thead>
+    <tbody>
+        {% for row in val %}
+            <tr>
+                <td style="border: 1px solid black;border-collapse: collapse;">{{row[0]}}</td>
+                <td style="border: 1px solid black;border-collapse: collapse;">{{row[1]}}</td>
+                <td style="border: 1px solid black;border-collapse: collapse;">{{row[2]}}</td>
+                <td style="border: 1px solid black;border-collapse: collapse;">{{row[3]}}</td>
+                <td style="border: 1px solid black;border-collapse: collapse;">{{row[4]}}</td>
+                <td style="border: 1px solid black;border-collapse: collapse;">{{row[5]}}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</form>
+      </div>
+    </div>
+  </div>
+
+
+
+    <div class="accordion-item">
+    <h2 class="accordion-header" id="headingSix">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+        Train Dataset
+      </button>
+    </h2>
+    <div id="collapseSix" class="accordion-collapse collapse show" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+      <div class="accordion-body" style="color:red">
+        <strong>* Please make sure that all the student's photos are captured before training. Otherwise student with no captured photos will not be detected.</strong>
+      <div>
+          <strong>* You can track training progress in your console.</strong></div>
+      </div>
+
+        <form action="" method="post" style="padding:50px; margin-left:15%;margin-right:15%">
+                  <button type="submit" class="btn btn-primary" name="train" value="train" style="margin-left:38%">Train Database</button>
+            <div style="text-align:center;color:green;font-weight:bold">{% if msg2%}
+          {{msg2}}
+            {% endif %}
+            </div>
+        </form>
+    </div>
+  </div>
+</div>
+  </body>
+</html>

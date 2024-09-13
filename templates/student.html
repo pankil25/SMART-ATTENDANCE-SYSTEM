@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+   <link href="{{ url_for('static',filename='assets/img/favicon.png')}}" rel="icon">
+  <link href="{{ url_for('static',filename = 'assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{{ url_for('static', filename='assets/vendor/animate.css/animate.min.css')}}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <title>SAS</title>
+     <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+  </head>
+  <body>
+ <header id="header" class="d-flex align-items-center">
+    <div class="container d-flex justify-content-between align-items-center">
+
+      <div class="logo">
+        <h1><a href="http://127.0.0.1:5000/">SAS</a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a  href="http://127.0.0.1:5000/">Home</a></li>
+          <li><a href="http://127.0.0.1:5000/aboutus/">About</a></li>
+          <li>
+          <a href="/logout" style="text-align:center;border:1px solid">Logout</a>
+        </li>
+            <li>
+                <a> : {{session.username}}</a>
+            </li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+    -->
+
+  <p class="lead" style="text-align:center; margin: 2%; font-size:40px; font-weight: bold;">
+  Welcome to Student Portal
+</p>
+    <div class="flex-container" style="display: flex;">
+<div class="card" style="width: 30rem;margin-right:12%">
+ <img src="/static/classroom.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">View Attendance</h5>
+    <form action="" method="post">
+    <p style="display:flex">Select Subject :   <select class="form-select" name="sub" style="width:5cm;margin-left:2%" aria-label="Default select example">
+  {% for j in sub %}
+  <OPTION value={{j[0]}}>{{j[0]}}</OPTION>
+{% endfor %}
+</select>
+    </p>
+        <label for="date">Select Date :</label>
+  <input type="date" style="margin-left:5%;width:5cm" id="date" name="date">
+    <div style="text-align:center">
+        <input id="uname" name="uname" value="{{session.username}}" type="hidden">
+        <button type="submit" class="btn btn-primary" name="view" value="view" style="margin-left:5%;margin-top:5%;background:#e96b56">View</button>
+    </div>
+        <div style="color:red;text-align:center;font-weight:bold">{%if msg%}
+        {{msg}}
+            {% endif %}</div>
+           </form>
+  </div>
+</div>
+
+
+        <div class="card" style="width: 30rem;margin-right:12%">
+
+  <div class="card-body">
+    <h5 class="card-title">Monthly Attendance</h5>
+    <form action="" method="post">
+</select>
+    </p>
+    <p style="display:flex">Select Subject :   <select class="form-select" name="sub" style="width:5cm;margin-left:2%" aria-label="Default select example">
+  {% for j in sub %}
+  <OPTION value={{j[0]}}>{{j[0]}}</OPTION>
+{% endfor %}
+</select>
+    </p>
+        <label for="month">Select Month & Year (YYYY-MM):</label>
+  <input type="month" style="margin-left:0%;width:4cm" id="month" name="month">
+    <div style="text-align:center">
+
+        <input id="uname2" name="uname2" value="{{session.username}}" type="hidden">
+        <button type="submit" class="btn btn-primary" name="monthly" value="monthly" style="margin-left:5%;margin-top:5%;background:#e96b56">View</button>
+    </div>
+        <div style="color:red;text-align:center;font-weight:bold">{%if msg3%}
+        {{msg3}}
+            {% endif %}</div>
+           </form>
+      <div>
+<div style="color:white;background-color:green;font-weight:bold;text-align:center;margin-top:20px;font-size:20px;font-family:'Lucida Console','Courier New', monospace;"> Dates of Present For Selected Month</div>
+            <table style="width:100%;text-align:center;">
+    <thead>
+    <tr>
+        <th style="border: 1px solid black;border-collapse: collapse;">Student Name</th>
+        <th style="border: 1px solid black;border-collapse: collapse;">Roll</th>
+        <th style="border: 1px solid black;border-collapse: collapse;">Date</th>
+        <th style="border: 1px solid black;border-collapse: collapse;">Time</th>
+    </tr>
+    </thead>
+    <tbody>
+        {% for row in m %}
+            <tr>
+                <td style="border: 1px solid black;border-collapse: collapse;">{{row[0]}}</td>
+                <td style="border: 1px solid black;border-collapse: collapse;">{{row[1]}}</td>
+                <td style="border: 1px solid black;border-collapse: collapse;">{{row[2]}}</td>
+                <td style="border: 1px solid black;border-collapse: collapse;">{{row[3]}}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+            </table></div>
+  </div>
+</div>
+    </div>
+  </body>
+</html>
