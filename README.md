@@ -52,7 +52,9 @@ python app.py
 ```
 Navigate to http://localhost:5000 in your browser to view the web interface.
 
-### 2. Train the Face Recognition Model
+### 2. You Can Find Username Password in login.db inside _auth tables.
+
+### 3. Train the Face Recognition Model
 To train the model using images in the dataset/ directory, run:
 ```bash
 python train.py
@@ -69,7 +71,7 @@ dataset/<br>
 
 
 
-### 3. Start Face Detection
+### 4. Start Face Detection
 To begin recognizing faces and recording attendance, run:
 
 ``` bash
@@ -77,7 +79,7 @@ python detection.py
 ```
 This will activate your webcam, detect faces, and display recognized names.
 
-### 4. View Attendance
+### 5. View Attendance
 Attendance is recorded in an SQLite database (attendance.db). You can view the attendance records via the web interface or query the database directly.
 
 
