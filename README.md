@@ -33,14 +33,14 @@ The Smart Attendance System is a face recognition-based attendance system that u
 
 ## Project Structure
 
-├── app.py                  # Flask app for the web interface <br>
-├── train.py                # Script to train the model using a dataset <br>
-├── detection.py            # Script for detecting faces and marking attendance<br>
-├── models/                 # Contains saved models after training<br>
-├── dataset/                # Directory for storing face images for training<br>
-├── templates/              # HTML templates for the Flask app<br>
-├── static/                 # Static files for the web app (CSS, JS)<br>
-├── README.md               # Project documentation<br>
+├── app.py                    ----------- # Flask app for the web interface <br>
+├── train.py                  ----------- # Script to train the model using a dataset <br>
+├── detection.py              ----------- # Script for detecting faces and marking attendance<br>
+├── models/                   ----------- # Contains saved models after training<br>
+├── dataset/                  ----------- # Directory for storing face images for training<br>
+├── templates/                ----------- # HTML templates for the Flask app<br>
+├── static/                   ----------- # Static files for the web app (CSS, JS)<br>
+├── README.md                 ----------- # Project documentation<br>
 
 ## Usage
 
