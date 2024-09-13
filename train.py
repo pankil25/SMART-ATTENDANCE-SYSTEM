@@ -40,7 +40,7 @@ def train(dir, model_save_path=None, n_neighbors=None, knn_algo='ball_tree', ver
 
     # Loop through each person in the training set
     for subdir, dirs, files in os.walk(dir):
-        for filename in files:
+        for filename in tqdm(files, desc="Processing Files"):
             filepath = subdir + os.sep + filename
             image = face_recognition.load_image_file(filepath)
             face_bounding_boxes = face_recognition.face_locations(image)
